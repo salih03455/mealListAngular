@@ -1,0 +1,32 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-12 col-lg-3">
+			<select class="form-control" [(ngModel)]="selectedDate" (ngModelChange)="selectedDateF($event)">
+				<option value="" [selected]>Tarih Seçiniz</option>
+				<option *ngFor="let dt of dates" [ngValue]="dt">
+					{{dt | date:'dd.MM.yyyy'}}
+				</option>
+			</select>
+		</div>
+		<div class="col-12 col-lg-9">
+			<div class="row mealWrap">
+				<div class="col-12 col-lg-4" *ngFor="let mealcat of mealCategory">
+					<div class="mealBox">
+						<div class="mealBoxTitle d-flex justify-content-end">
+							<div class="mr-auto p-3">{{mealcat}}</div>
+							<div class="p-3">Kcal</div>
+						</div>
+						<div class="mealBoxContent">
+							<div *ngFor="let meal of mealList | filter:mealcat">
+								<div class="meal d-flex justify-content-end">
+									<div class="mr-auto">{{meal.fields.Title}}</div>
+									<div>{{meal.fields.Calorie}}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
