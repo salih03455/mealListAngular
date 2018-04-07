@@ -19,7 +19,7 @@
 						<div class="mealBoxContent">
 							<div *ngFor="let meal of mealList | filter:mealcat">
 								<div class="meal d-flex justify-content-end">
-									<div class="mr-auto">{{meal.fields.Title}}</div>
+									<div class="mr-auto">{{meal.fields.Title | capitalize}}</div>
 									<div>{{meal.fields.Calorie}}</div>
 								</div>
 							</div>
