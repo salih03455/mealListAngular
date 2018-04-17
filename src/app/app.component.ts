@@ -21,7 +21,6 @@ export class AppComponent {
 		interface UserResponse {
 			value: any,
 			fields: object;
-			Title: string;
 		}
 		this.http.get<UserResponse>('../assets/data.json').subscribe(data => {
 			this.data = data.value;
