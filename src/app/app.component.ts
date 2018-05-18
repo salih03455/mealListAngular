@@ -22,16 +22,19 @@ export class AppComponent {
 			value: any,
 			fields: object;
 		}
-		this.http.get<UserResponse>('../assets/data.json').subscribe(data => {
-			this.data = data.value;
-			let newDateArr = [];
-			for (const item of data.value) {
-				if (newDateArr.indexOf(item.fields.ItemStartDate) === -1) {
-					newDateArr.push(item.fields.ItemStartDate);
+		this.http.get<UserResponse>('../assets/data.json').subscribe(
+			(data) => {
+				this.data = data.value;
+				let newDateArr = [];
+				for (const item of data.value) {
+					if (newDateArr.indexOf(item.fields.ItemStartDate) === -1) {
+						newDateArr.push(item.fields.ItemStartDate);
+					}
 				}
-			}
-			this.dates = newDateArr;
-		});
+				this.dates = newDateArr;
+			},
+			(error) => { alert('Connection Error!'); }
+		);
 	}
 
 	selectedDateF(val) {
